@@ -1,6 +1,6 @@
-import React from "react";
+import React,{FunctionComponent} from "react";
 
-const Presentation = () => {
+const Presentation: FunctionComponent = () => {
   return (
     <>
       <section id="about" className="about">

@@ -1,0 +1,36 @@
+.loadingAnimation{
+    width: 120px;
+    height: 120px;
+    margin-top:200px;
+    margin-bottom:200px
+}
+
+.loadingHome{
+   position: fixed;
+   z-index: 10000;
+   width:100vw;
+   display:flex;
+   height:100vh;
+   align-items: center;
+   justify-content: center;
+   background-color:rgba(255,255,255,0.999);
+}
+
+.loadingAnimationHome{
+    width: 160px;
+    height: 160px;
+}
+
+.logo{
+    position:absolute;
+    width:80px;
+    margin-left:39px;
+    margin-top:65px;
+}
+
+.loadingContainer{
+    margin:0 auto;
+    width:174px;
+    border:1px solid #ccc;
+    border-radius: 16px;
+}

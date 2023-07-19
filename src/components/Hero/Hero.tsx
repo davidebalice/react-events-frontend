@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, FunctionComponent } from "react";
 
-const Hero = () => {
+const Hero: FunctionComponent = () => {
   const assetsPath = process.env.PUBLIC_URL + "/assets";
   return (
     <section id="hero" className="hero">

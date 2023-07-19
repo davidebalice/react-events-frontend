@@ -1,15 +1,13 @@
 import React, { useEffect, FunctionComponent } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./common/Header/Header";
-import Head from "./common/Head/Head";
-import BottomJs from "./common/BottomJs/BottomJs";
-import Hero from "./components/Hero/Hero";
-import Presentation from "./components/Home/Presentation";
-import Main from "./common/Main/Main";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import "./main.css";
+import { BrowserRouter as Router, Link, NavLink } from "react-router-dom";
+import { Provider } from "./context";
+import Header from "./common/Header/Header";
+import AOS from "aos";
+import SiteRoutes from "./routes/SiteRoutes";
 
 const App: FunctionComponent = () => {
   useEffect(() => {
@@ -17,13 +15,11 @@ const App: FunctionComponent = () => {
   }, []);
   return (
     <>
-      <Head />
-      <Main>
-        <Header />
-        <Hero />
-        <Presentation />
-        <BottomJs />
-      </Main>
+      <Router>
+        <Provider>
+          <SiteRoutes />
+        </Provider>
+      </Router>
     </>
   );
 };

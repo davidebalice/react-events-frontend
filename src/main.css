@@ -144,70 +144,6 @@ section {
   color: rgba(var(--color-default-rgb), 0.3);
 }
 
-.header {
-  --color-background: #ffffff;
-  --color-inverse: #ffffff;
-  color: var(--color-default);
-  padding: 15px 0;
-  transition: all 0.5s;
-  z-index: 997;
-  /*background-color: var(--color-background);*/
-}
-
-.header .logo img {
-  max-height: 40px;
-  margin-right: 6px;
-}
-
-.header .logo h1 {
-  font-size: 24px;
-  margin: 0;
-  font-weight: 600;
-  color: var(--color-secondary);
-}
-
-.header .logo span {
-  color: var(--color-primary);
-  font-size: 24px;
-  font-weight: 600;
-  padding-left: 3px;
-}
-
-.header .btn-getstarted,
-.header .btn-getstarted:focus {
-  color: var(--color-inverse);
-  background: var(--color-primary);
-  font-size: 14px;
-  padding: 8px 26px;
-  margin: 0;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-.header .btn-getstarted:hover,
-.header .btn-getstarted:focus:hover {
-  color: var(--color-inverse);
-  background: rgba(var(--color-primary-rgb), 0.85);
-}
-
-@media (max-width: 1200px) {
-  .header .logo {
-    order: 1;
-  }
-
-  .header .btn-getstarted {
-    order: 2;
-    margin: 0 15px 0 0;
-    padding: 6px 20px;
-  }
-
-  .header .navmenu {
-    order: 3;
-  }
-}
-
-/* Global Header on page scroll
-------------------------------*/
 .scrolled .header {
   --color-background: #ffffff;
   --color-secondary: #444444;
@@ -216,8 +152,6 @@ section {
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Global Scroll Margin Top
-------------------------------*/
 section {
   scroll-margin-top: 90px;
 }
@@ -246,10 +180,7 @@ section {
   --color-nav-hover: #d83535;
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/* Desktop Navigation */
+
 @media (min-width: 1200px) {
   .navmenu {
     padding: 0;
@@ -436,7 +367,7 @@ section {
 
   .navmenu a,
   .navmenu a:focus {
-    color: var(--color-nav-dropdown);
+    color: #fff;
     padding: 10px 20px;
     font-family: var(--font-secondary);
     font-size: 17px;
@@ -531,9 +462,6 @@ section {
   }
 }
 
-/*--------------------------------------------------------------
-# Scroll Top Button
---------------------------------------------------------------*/
 .scroll-top {
   position: fixed;
   visibility: hidden;

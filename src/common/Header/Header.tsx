@@ -1,29 +1,84 @@
-import React, { FunctionComponent } from "react";
-const Header: FunctionComponent = () => {
+import React, { FC, useEffect, useState } from "react";
+import classes from "./Header.module.css";
+import { BrowserRouter as Router, Link, NavLink } from "react-router-dom";
+import logo from "../../assets/images/logoWhite.png";
+import logoScroll from "../../assets/images/logo.png";
+
+interface HeaderProps {
+  home: boolean;
+}
+
+const Header: FC<HeaderProps> = ({ home }) => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!home) {
+      setIsScrolled(true);
+    }
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (home) {
+        setIsScrolled(scrollTop > 0);
+      } else {
+        setIsScrolled(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [home]);
+
+  const headerClasses = [
+    classes.header,
+    isScrolled ? classes.headerScrolled : "",
+    "fixed-top",
+    "d-flex",
+    "align-items-center",
+  ].join(" ");
+
+  const navmenuClasses = [
+    "navmenu",
+    isScrolled ? classes.navmenuScrolled : "",
+  ].join(" ");
+
+  console.log(home);
+  /*
+  useEffect(() => {
+    if (home === false) {
+      setIsScrolled(false);
+    }
+  }, [home]);
+*/
   return (
     <>
-      <header
-        id="header"
-        className="header fixed-top d-flex align-items-center"
-      >
+      <header id="header" className={headerClasses}>
         <div className="container-fluid d-flex align-items-center justify-content-between">
           <a
-            href="index.html"
+            href="/"
             className="logo d-flex align-items-center me-auto me-xl-0"
           >
-            <h1>Append</h1>
-            <span>.</span>
+            <img
+              src={isScrolled ? logoScroll : logo}
+              alt="db logo"
+              className={classes.logo}
+            />
           </a>
 
-          <nav id="navmenu" className="navmenu">
+          <nav id="navmenu" className={navmenuClasses}>
             <ul>
               <li>
-                <a href="index.html#hero" className="active">
+                <NavLink to="/" className="nav-link smooth-scroll">
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="index.html#about">About</a>
+                <NavLink to="/calendar" className="nav-link smooth-scroll">
+                  Calendar
+                </NavLink>
               </li>
               <li>
                 <a href="index.html#services">Services</a>

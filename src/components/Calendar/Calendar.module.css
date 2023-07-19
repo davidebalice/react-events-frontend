@@ -1,0 +1,16 @@
+.calendarContainer {
+  padding: 100px;
+  padding-top: 0px;
+}
+
+@media (max-width: 767px) {
+  .calendarContainer {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 1290px) {
+    .calendarContainer {
+      padding: 30px;
+    }
+  }

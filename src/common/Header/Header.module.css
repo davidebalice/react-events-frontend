@@ -1,0 +1,75 @@
+.header {
+  --color-background: #ffffff;
+  --color-inverse: #ffffff;
+  color: var(--color-default);
+  padding: 15px 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+.header .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.header .logo h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.header .logo span {
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 600;
+  padding-left: 3px;
+}
+
+.header .btn-getstarted,
+.header .btn-getstarted:focus {
+  color: var(--color-inverse);
+  background: var(--color-primary);
+  font-size: 14px;
+  padding: 8px 26px;
+  margin: 0;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.header .btn-getstarted:hover,
+.header .btn-getstarted:focus:hover {
+  color: var(--color-inverse);
+  background: rgba(var(--color-primary-rgb), 0.85);
+}
+
+@media (max-width: 1200px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .btn-getstarted {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 20px;
+  }
+
+  .header .navmenu {
+    order: 3;
+  }
+}
+
+.headerScrolled {
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.39);
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.39);
+}
+
+.navmenuScrolled a,
+.navmenuScrolled a:focus {
+  color: #333 !important;
+}
+
+.logo {
+  max-width: 170px;
+}

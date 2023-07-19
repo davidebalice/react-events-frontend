@@ -1,0 +1,19 @@
+.topFixedPage{
+    min-height: 70px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topPageOverlay{
+    position: absolute;
+    min-height: 70px;
+    width: 100%;
+    background: #333;
+}
+
+.topContentPage{
+    margin-top: 8em;
+}
+
