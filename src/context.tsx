@@ -1,7 +1,9 @@
 import React, { createContext, useState, ReactNode } from "react";
+export const backendURL = "http://localhost:8000";
 
 interface ContextProps {
   debug: boolean;
+  backendURL: string;
   lang: string;
   firstRoute: boolean;
   rendered: boolean;
@@ -13,6 +15,7 @@ interface ContextProps {
 
 export const Context = createContext<ContextProps>({
   debug: true,
+  backendURL: backendURL,
   lang: "en",
   firstRoute: true,
   rendered: false,
@@ -36,6 +39,7 @@ export function Provider({ children }: ProviderProps) {
     <Context.Provider
       value={{
         debug,
+        backendURL,
         lang,
         firstRoute,
         rendered,

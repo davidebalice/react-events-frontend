@@ -7,6 +7,7 @@ import Hero from "../components/Hero/Hero";
 import Presentation from "../components/Home/Presentation";
 import Main from "../common/Main/Main";
 import Header from "../common/Header/Header";
+import EventHome from "../components/Events/EventHome";
 
 const Home: FunctionComponent = () => {
   return (
@@ -16,6 +17,7 @@ const Home: FunctionComponent = () => {
       <Main>
         <Hero />
         <Presentation />
+        <EventHome />
         <BottomJs />
       </Main>
       <Footer />
