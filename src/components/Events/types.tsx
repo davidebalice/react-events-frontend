@@ -23,6 +23,7 @@ export interface Event {
 }
 
 export interface EventData {
+  events: any;
   status: string;
   results: number;
   data: {
@@ -32,4 +33,5 @@ export interface EventData {
 
 export interface CardProps {
   event: Event;
+  delay: Number;
 }

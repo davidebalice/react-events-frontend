@@ -46,13 +46,7 @@ const Header: FC<HeaderProps> = ({ home }) => {
   ].join(" ");
 
   console.log(home);
-  /*
-  useEffect(() => {
-    if (home === false) {
-      setIsScrolled(false);
-    }
-  }, [home]);
-*/
+
   return (
     <>
       <header id="header" className={headerClasses}>
@@ -76,66 +70,24 @@ const Header: FC<HeaderProps> = ({ home }) => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/events" className="nav-link smooth-scroll">
+                  Events
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/calendar" className="nav-link smooth-scroll">
                   Calendar
                 </NavLink>
               </li>
               <li>
-                <a href="index.html#services">Services</a>
+                <NavLink to="/about-us" className="nav-link smooth-scroll">
+                  About us
+                </NavLink>
               </li>
               <li>
-                <a href="index.html#portfolio">Portfolio</a>
-              </li>
-              <li>
-                <a href="index.html#team">Team</a>
-              </li>
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-              <li className="dropdown has-dropdown">
-                <a href="#">
-                  <span>Dropdown</span> <i className="bi bi-chevron-down"></i>
-                </a>
-                <ul className="dd-box-shadow">
-                  <li>
-                    <a href="#">Dropdown 1</a>
-                  </li>
-                  <li className="dropdown has-dropdown">
-                    <a href="#">
-                      <span>Deep Dropdown</span>{" "}
-                      <i className="bi bi-chevron-down"></i>
-                    </a>
-                    <ul className="dd-box-shadow">
-                      <li>
-                        <a href="#">Deep Dropdown 1</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Dropdown 2</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Dropdown 3</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Dropdown 4</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Dropdown 5</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">Dropdown 2</a>
-                  </li>
-                  <li>
-                    <a href="#">Dropdown 3</a>
-                  </li>
-                  <li>
-                    <a href="#">Dropdown 4</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="index.html#contact">Contact</a>
+                <NavLink to="/contact" className="nav-link smooth-scroll">
+                  Contact
+                </NavLink>
               </li>
             </ul>
 

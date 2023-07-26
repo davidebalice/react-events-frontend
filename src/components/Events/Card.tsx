@@ -4,47 +4,39 @@ import { backendURL } from "../../context";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { BiSolidMap } from "react-icons/bi";
 import parse from "html-react-parser";
+import classes from "./Card.module.css";
 
-const Card: React.FC<CardProps> = ({ event }) => {
+const Card: React.FC<CardProps> = ({ event, delay }) => {
   const photo = `${backendURL}/img/events/${event.imageCover}`;
+  const formattedDate = new Date(event.startDate).toLocaleDateString();
 
   return (
-    <div className="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-      <article>
-        <div className="post-img">
-          <img src={photo} alt="" className="img-fluid" />
-        </div>
-
-        <p className="post-category">Politics</p>
-
-        <p className="post-category">
-          <AiTwotoneCalendar />
-          {event.startDate}
-
-          <BiSolidMap />
-          {event.location.description}
-        </p>
-
-        <h2 className="title">
-          <a href="blog-details.html">{event.name}</a>
-        </h2>
-
-        <p>{parse(event.summary)}</p>
-
-        <div className="d-flex align-items-center">
-          <img
-            src="assets/img/blog/blog-author.jpg"
-            alt=""
-            className="img-fluid post-author-img flex-shrink-0"
-          />
-          <div className="post-meta">
-            <p className="post-author">Maria Doe</p>
-            <p className="post-date">
-              <time dateTime="2022-01-01">Jan 1, 2022</time>
-            </p>
+    <div
+      className="col-xl-4 col-md-6"
+      data-aos="fade-up"
+      data-aos-delay={delay}
+      data-delay={delay}
+    >
+      <a href="blog-details.html">
+        <article>
+          <div className="post-img">
+            <p className="post-category-abs">Politics</p>
+            <img src={photo} alt="" className="img-fluid" />
           </div>
-        </div>
-      </article>
+
+          <div className="d-flex align-items-center">
+            <AiTwotoneCalendar className={classes.icon} />
+            <span className={classes.text}>{formattedDate}</span>
+
+            <BiSolidMap className={`${classes.icon} ms-4`} />
+            <span className={classes.text}>{event.location.description}</span>
+          </div>
+
+          <h2 className={classes.title}>{event.name}</h2>
+
+          <p className={classes.description}>{parse(event.summary)}</p>
+        </article>
+      </a>
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { HelmetProvider, Helmet } from "react-helmet-async";
 const Head = () => {
   useEffect(() => {
     const assetsPath = process.env.PUBLIC_URL + "/assets";
-    // Codice con effetti collaterali o richieste di rete
   }, []);
   const assetsPath = process.env.PUBLIC_URL + "/assets";
   return (
@@ -13,10 +12,7 @@ const Head = () => {
         <Helmet>
           <title>Events demo - React Node - Davide Balice</title>
           <link href={assetsPath + "/img/favicon.png"} rel="icon" />
-          <link
-            href={assetsPath + "/img/apple-touch-icon.png"}
-            rel="apple-touch-icon"
-          />
+         
 
           <link href="https://fonts.googleapis.com" rel="preconnect" />
           <link href="https://fonts.gstatic.com" rel="preconnect" />

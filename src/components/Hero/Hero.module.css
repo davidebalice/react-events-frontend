@@ -1,0 +1,21 @@
+.logo {
+  height: auto !important;
+  width: 340px !important;
+  clear: both;
+  margin: 0 auto;
+  position: relative !important;
+}
+.logoContainer {
+  clear: both;
+  width: 100%;
+  text-align: center;
+}
+.url {
+  font-style: italic;
+  font-size: 13px;
+}
+.title {
+  color: #ffbb00;
+  font-size: 49px !important;
+  text-shadow: 2px 4px 2px rgba(0, 0, 0, 0.38);
+}

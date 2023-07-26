@@ -13,15 +13,18 @@ const EventHome: React.FC = (props) => {
         const response = await axios.get<EventData>(
           `${backendURL}/api/v1/events/`
         );
-        const filteredEvents = response.data.data.events.filter((event) => {
-          const startDate = new Date(event.startDate);
-          const today = new Date();
-          return startDate > today;
-        });
+        const filteredEvents: Event[] = response.data.events.filter(
+          (event: Event) => {
+            const startDate = new Date(event.startDate);
+            const today = new Date();
+            return startDate > today;
+          }
+        );
         filteredEvents.sort(
-          (a, b) =>
+          (a: Event, b: Event) =>
             new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
         );
+
         const limitedEvents = filteredEvents.slice(0, 6);
         setEvents(limitedEvents);
       } catch (error) {
@@ -35,7 +38,7 @@ const EventHome: React.FC = (props) => {
   return (
     <section id="recent-posts" className="recent-posts">
       <div className="container section-title" data-aos="fade-up">
-        <h2>Recent Posts</h2>
+        <h2>Upcoming events</h2>
         <p>
           Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
           consectetur velit
@@ -44,9 +47,10 @@ const EventHome: React.FC = (props) => {
 
       <div className="container">
         <div className="row gy-4">
-          {events.map((event) => (
-            <Card key={event._id} event={event} />
-          ))}
+          {events.map((event, index) => {
+            const currentDelay = index * 5000;
+            return <Card key={event._id} event={event} delay={currentDelay} />;
+          })}
         </div>
       </div>
     </section>
