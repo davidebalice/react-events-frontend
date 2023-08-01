@@ -1,6 +1,9 @@
 .calendarContainer {
-  padding: 100px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1400px !important;
   padding-top: 0px;
+  margin-bottom:70px;
 }
 
 @media (max-width: 767px) {
@@ -11,6 +14,6 @@
 
 @media (max-width: 1290px) {
     .calendarContainer {
-      padding: 30px;
+      padding: 20px;
     }
   }
