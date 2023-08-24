@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 import classes from "./Card.module.css";
 
 const Card: React.FC<CardProps> = ({ event, delay }) => {
-  const photo = `${backendURL}/img/events/${event.imageCover}`;
+  const photo = `${backendURL}/assets/images/events/${event.imageCover}`;
   const formattedDate = new Date(event.startDate).toLocaleDateString();
 
   return (
@@ -20,7 +20,11 @@ const Card: React.FC<CardProps> = ({ event, delay }) => {
       <a href="blog-details.html">
         <article>
           <div className="post-img">
-            <p className="post-category-abs">Politics</p>
+            {event.category && (
+              <p className="post-category-abs">
+                {event.category.name}
+              </p>
+            )}
             <img src={photo} alt="" className="img-fluid" />
           </div>
 

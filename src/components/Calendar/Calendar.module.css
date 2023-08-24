@@ -3,7 +3,7 @@
   margin: 0 auto;
   max-width: 1400px !important;
   padding-top: 0px;
-  margin-bottom:70px;
+  margin-bottom: 70px;
 }
 
 @media (max-width: 767px) {
@@ -13,7 +13,48 @@
 }
 
 @media (max-width: 1290px) {
-    .calendarContainer {
-      padding: 20px;
-    }
+  .calendarContainer {
+    padding: 20px;
   }
+}
+
+.text {
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 130px;
+  color: #555;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffbb00;
+  text-align: center;
+}
+
+.calendarIcon {
+  font-size: 18px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.lineIcon {
+  width: 400px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  clear: both;
+  font-size: 20px;
+  color: #999;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.boxIcon {
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: -20px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}

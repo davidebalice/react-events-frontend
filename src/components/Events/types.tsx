@@ -7,6 +7,10 @@ export interface Location {
 export interface Event {
   _id: string;
   name: string;
+  category: {
+    _id: string;
+    name: string;
+  };
   ratingsAverage: number;
   ratingsQuantity: number;
   summary: string;

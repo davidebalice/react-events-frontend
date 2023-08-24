@@ -11,3 +11,18 @@
   clear: both;
   width: 100%;
 }
+
+.breadcrumb {
+  font-size: 17px;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.38);
+  font-weight: normal;
+  color: #fff;
+}
+
+.breadcrumb a {
+  color: #fff;
+}
+
+.breadcrumbSign{
+  font-size: 13px;
+}

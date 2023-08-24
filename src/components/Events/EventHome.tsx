@@ -3,6 +3,7 @@ import axios from "axios";
 import { EventData, Event } from "./types";
 import Card from "./Card";
 import { backendURL } from "../../context";
+import { demoMode } from "../../apiConfig";
 
 const EventHome: React.FC = (props) => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -11,13 +12,17 @@ const EventHome: React.FC = (props) => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get<EventData>(
-          `${backendURL}/api/v1/events/`
+          `${backendURL}/api/v1/events/?limit=6`
         );
         const filteredEvents: Event[] = response.data.events.filter(
           (event: Event) => {
             const startDate = new Date(event.startDate);
             const today = new Date();
-            return startDate > today;
+            if (demoMode) {
+              return true;
+            } else {
+              return startDate >= today;
+            }
           }
         );
         filteredEvents.sort(

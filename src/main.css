@@ -68,9 +68,6 @@ section {
   overflow: clip;
 }
 
-/*--------------------------------------------------------------
-# Section Title
---------------------------------------------------------------*/
 .section-title {
   text-align: center;
   padding-bottom: 60px;
@@ -164,8 +161,6 @@ section {
   }
 }
 
-/* Home Page Custom Header
-------------------------------*/
 .index-page .header {
   --color-background: rgba(255, 255, 255, 0);
   --color-secondary: #ffffff;
@@ -173,8 +168,6 @@ section {
   --color-nav-hover: #ffffff;
 }
 
-/* Home Page Custom Header on page scroll
-------------------------------*/
 .index-page.scrolled .header {
   --color-background: #ffffff;
   --color-secondary: #444444;
@@ -336,7 +329,6 @@ section {
   }
 }
 
-/* Mobile Navigation */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
     color: var(--color-nav);
@@ -493,9 +485,6 @@ section {
   opacity: 1;
 }
 
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
 #preloader {
   position: fixed;
   inset: 0;
@@ -570,18 +559,12 @@ section {
   }
 }
 
-/*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices
---------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
 }
 
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
 .footer {
   --color-background: #f4f4f4;
   --color-box-background: #eaeaea;
@@ -700,11 +683,6 @@ section {
   font-size: 13px;
 }
 
-/*--------------------------------------------------------------
-# Home Page
---------------------------------------------------------------*/
-/* Hero Section - Home Page
-------------------------------*/
 .hero {
   --color-default: #ffffff;
   --color-default-rgb: 255, 255, 255;
@@ -796,8 +774,6 @@ section {
   }
 }
 
-/* Clients Section - Home Page
-------------------------------*/
 .clients {
   padding: 10px 0;
 }
@@ -828,8 +804,6 @@ section {
   }
 }
 
-/* About Section - Home Page
-------------------------------*/
 .about {
   --color-background: #f4f4f4;
 }
@@ -936,8 +910,6 @@ section {
   }
 }
 
-/* Stats Section - Home Page
-------------------------------*/
 .stats {
   --color-default: #ffffff;
   --color-default-rgb: 255, 255, 255;
@@ -992,8 +964,6 @@ section {
   color: rgba(var(--color-default-rgb), 0.6);
 }
 
-/* Services Section - Home Page
-------------------------------*/
 .services .service-item {
   position: relative;
   padding-top: 40px;
@@ -1068,8 +1038,6 @@ section {
   font-size: 14px;
 }
 
-/* Features Section - Home Page
-------------------------------*/
 .features .features-item {
   color: rgba(var(--color-default-rgb), 0.8);
 }
@@ -1169,8 +1137,6 @@ section {
   z-index: 2;
 }
 
-/* Portfolio Section - Home Page
-------------------------------*/
 .portfolio .portfolio-filters {
   padding: 0;
   margin: 0 auto 20px auto;
@@ -1270,8 +1236,6 @@ section {
   bottom: 0;
 }
 
-/* Pricing Section - Home Page
-------------------------------*/
 .pricing {
   padding: 60px 0 120px 0;
 }
@@ -1518,8 +1482,6 @@ section {
   color: var(--color-primary);
 }
 
-/* Team Section - Home Page
-------------------------------*/
 .team {
   --color-background: #f4f4f4;
   --color-box-background-rgb: 0, 0, 0;
@@ -1983,11 +1945,6 @@ section {
   }
 }
 
-/*--------------------------------------------------------------
-# Portfolio Details Page
---------------------------------------------------------------*/
-/* Portfolio-details Section - Portfolio Details Page
-------------------------------*/
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
 }
@@ -2145,11 +2102,6 @@ section {
   padding: 0;
 }
 
-/*--------------------------------------------------------------
-# Services Details Page
---------------------------------------------------------------*/
-/* Service-details Section - Services Details Page
-------------------------------*/
 .service-details .service-box {
   padding: 20px;
   box-shadow: 0px 2px 20px rgba(var(--color-default-rgb), 0.12);
@@ -2815,4 +2767,51 @@ section {
 .blog-details .comments .reply-form .btn-primary:hover {
   color: var(--color-inverse);
   background-color: rgba(var(--color-primary-rgb), 0.8);
+}
+
+.fc td {
+  background: #fff;
+}
+
+.fc th {
+  background: #f1f1f1;
+  color: #fff;
+}
+
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-event-main-frame {
+  flex-direction: row;
+  text-align: left;
+}
+
+.fc-event-desc,
+.fc-event-title {
+  white-space: break-spaces;
+}
+
+.fc-event-main-frame {
+  background-color: #ffbb00;
+  border-color: #ffbb00 !important;
+  outline-color: #ffbb00;
+}
+
+.fc-h-event {
+  border-color: #ffbb00 !important;
+  padding: 2px;
+  background-color: #ffbb00;
+}
+
+.fc-event-title {
+  color: #333;
+  padding: 2px !important;
+  padding-left: 10px !important;
+  font-weight: bold;
+}
+
+.fc-event-time {
+  display: none;
+}
+
+.fc-daygrid-event-dot {
+  display: none;
 }
