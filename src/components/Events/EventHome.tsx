@@ -41,7 +41,10 @@ const EventHome: React.FC = (props) => {
   }, []);
 
   return (
-    <section id="recent-posts" className="recent-posts">
+    <section
+      id="recent-posts"
+      className="recent-posts"
+    >
       <div className="container section-title" data-aos="fade-up">
         <h2>Upcoming events</h2>
         <p>

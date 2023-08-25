@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 
 interface BreadcrumbProps {
   link: String;
+  title: String;
+  detail: boolean;
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
@@ -11,7 +13,16 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
     <div className={classes.breadcrumb}>
       <NavLink to="/">Home</NavLink>
       <span className={classes.breadcrumbSign}>{" > "}</span>
-      <a href="#">{props.link}</a>
+
+      {props.detail ? (
+        <>
+          <NavLink to="/events">{props.link}</NavLink>
+          {" > "}
+          <a href="#">{props.title}</a>
+        </>
+      ) : (
+        <a href="#">{props.link}</a>
+      )}
     </div>
   );
 };

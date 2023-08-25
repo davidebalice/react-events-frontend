@@ -26,6 +26,10 @@ export interface Event {
   location: Location;
 }
 
+export interface EventResponse {
+  event: Event;
+}
+
 export interface EventData {
   events: any;
   status: string;

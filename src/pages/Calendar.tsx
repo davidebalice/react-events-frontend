@@ -17,13 +17,19 @@ const Calendar: FunctionComponent = () => {
       <title>Events Calendar</title>
       <Head />
       <Header home={false} />
-      <Banner img={calendar} text="Events calendar" />
+      <Banner
+        img={calendar}
+        text="Events calendar"
+        link="Calendar"
+        title=""
+        detail={false}
+      />
       <Spacer height={70} />
       <Main>
         <LoadingHome />
         <Text />
         <Divider />
-        <Spacer height={80}/>
+        <Spacer height={80} />
         <EventCalendar />
       </Main>
       <Footer />

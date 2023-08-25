@@ -23,6 +23,9 @@
   width: 100%;
   height: auto;
   position: relative;
+  border: 1px solid;
+  margin: 0;
+  padding-bottom: 0;
 }
 .bannerTextContainer {
   position: absolute;

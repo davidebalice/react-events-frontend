@@ -1,31 +1,58 @@
-import React, { FunctionComponent } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
+import { useParams } from "react-router-dom";
+import { backendURL } from "../context";
+import axios from "axios";
+import { Event, EventResponse } from "../components/Events/types";
 import Footer from "../common/Footer/Footer";
 import LoadingHome from "../common/Loading/LoadingHome";
 import Head from "../common/Head/Head";
-import Main from "../common/Main/Main";
-import Team from "../components/Team/Team";
-import Text from "../components/Calendar/Text";
 import Header from "../common/Header/Header";
 import Banner from "../components/Hero/Banner";
 import Spacer from "../components/Utils/Spacer";
-import Divider from "../components/Utils/Divider";
-import calendar from "../assets/images/calendar.jpg";
+import Details from "../components/Events/Details";
+import eventsPhoto from "../assets/images/events.jpg";
 
 const EventDetails: FunctionComponent = () => {
+  const [eventData, setEventData] = useState<Event>();
+  const { slug } = useParams();
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get<EventResponse>(
+          `${backendURL}/api/v1/event/${slug}`
+        );
+        const eventData: Event = response.data.event;
+        setEventData(eventData);
+      } catch (error) {
+        console.error("Err:", error);
+      }
+    };
+    fetchEvents();
+  }, []);
+
   return (
     <>
-      <title>Event details</title>
+      {eventData && <title>{eventData.name}</title>}
       <Head />
       <Header home={false} />
-      <Banner img={calendar} text="Events calendar" />
-      <Spacer height={70} />
-      <Main>
+      {eventData && (
+        <Banner
+          img={eventsPhoto}
+          text={eventData.name}
+          link="Events"
+          title={eventData.name}
+          detail={true}
+        />
+      )}
+      <div className="bgDetails">
+        <Spacer height={110} />
+        {eventData && 
+          <Details eventData={eventData} />
+        }
         <LoadingHome />
-        <Text />
-        <Divider />
         <Spacer height={80} />
-        <Team />
-      </Main>
+      </div>
       <Footer />
     </>
   );

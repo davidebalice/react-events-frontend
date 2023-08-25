@@ -1,0 +1,17 @@
+.title {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 40px;
+  font-size: 15px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  font-weight: bold;
+}
+
+.description {
+  padding: 30px;
+  padding-bottom: 60px;
+  font-size: 13px;
+  text-align: justify;
+}

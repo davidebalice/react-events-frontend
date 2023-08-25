@@ -1815,8 +1815,6 @@ section {
   margin-bottom: 0;
 }
 
-/* Contact Section - Home Page
-------------------------------*/
 .contact {
   --color-box-background: #f7f7f7;
 }
@@ -2814,4 +2812,63 @@ section {
 
 .fc-daygrid-event-dot {
   display: none;
+}
+
+.bgDetails {
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.detailsPage {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.column {
+  flex: 1;
+}
+
+.column-1 {
+  flex: 67%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.column-2 {
+  flex: 30%;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.column-3 {
+  flex: 2%;
+}
+
+@media screen and (max-width: 768px) {
+  .detailsPage {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .column-1 {
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .column-2 {
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .column-3 {
+    display: none;
+  }
 }

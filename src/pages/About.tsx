@@ -17,7 +17,13 @@ const AboutPage: FunctionComponent = () => {
       <title>Events Calendar</title>
       <Head />
       <Header home={false} />
-      <Banner img={calendar} text="Events calendar" />
+      <Banner
+        img={calendar}
+        text="About"
+        link="About"
+        title=""
+        detail={false}
+      />
       <Spacer height={70} />
       <Main>
         <LoadingHome />
