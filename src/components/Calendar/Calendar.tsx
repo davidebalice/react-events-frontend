@@ -15,9 +15,11 @@ interface Event {
   date?: string;
   start?: string;
   end?: string;
+  slug?: string;
   typeData?: string;
-  photo?: string;
+  imageCover?: string;
   summary?: string;
+  category?: object;
 }
 
 const Calendar: React.FC = () => {
@@ -29,8 +31,10 @@ const Calendar: React.FC = () => {
       start: "09:00",
       end: "12:00",
       typeData: "tipo1",
-      photo: "url-dell-immagine",
+      imageCover: "url-dell-immagine",
+      slug: "url-dell-immagine",
       summary: "Descrizione dell'evento 1",
+      category: {},
     },
   ]);
   const [show, setShow] = useState(false);
@@ -57,19 +61,34 @@ const Calendar: React.FC = () => {
         const apiEvents: Event[] = response.data.events;
         console.log(response.data.events);
         const transformedData: Event[] = apiEvents.map((event: any) => {
-          const { name, typeDate, startDate, endDate, imageCover } = event;
+          const {
+            name,
+            typeDate,
+            startDate,
+            endDate,
+            imageCover,
+            slug,
+            summary,
+            category,
+          } = event;
           if (typeDate === "single") {
             return {
               title: name,
               imageCover,
+              slug,
               date: startDate,
+              summary,
+              category,
             };
           } else if (typeDate === "range") {
             return {
               title: name,
               imageCover,
               start: startDate,
+              slug,
               end: endDate,
+              summary,
+              category,
             };
           } else {
             return {
@@ -77,7 +96,10 @@ const Calendar: React.FC = () => {
               imageCover,
               date: undefined,
               start: undefined,
+              slug: undefined,
               end: undefined,
+              summary: undefined,
+              category: undefined,
             };
           }
         });
@@ -87,39 +109,10 @@ const Calendar: React.FC = () => {
         console.error("Errore nella chiamata API:", error);
       });
   }, []);
-  /*
-  const handleEventClick = (clickInfo: {
-    event: {
-      title: string;
-      start: any;
-      end: any;
-      extendedProps: {
-        photo: string;
-      };
-    };
-    view: { calendar: any };
-  }) => {
-    const { title, start, end, extendedProps } = clickInfo.event;
-    const { photo } = extendedProps;
-
-    const updatedData = {
-      ...data,
-      title: title,
-      start: start !== null ? localDate(start) : null,
-      end: end !== null ? localDate(end) : null,
-      photo: photo,
-    };
-
-    setData(updatedData);
-    handleShow();
-    let calendarApi = clickInfo.view.calendar;
-    calendarApi.unselect();
-  };
-*/
 
   const handleEventClick = (clickInfo: EventClickArg) => {
     const { title, start, end, extendedProps } = clickInfo.event;
-    const { imageCover } = extendedProps;
+    const { imageCover, slug, summary, category } = extendedProps;
 
     const updatedData = {
       ...data,
@@ -127,6 +120,9 @@ const Calendar: React.FC = () => {
       start: start !== null ? localDate(start) : null,
       end: end !== null ? localDate(end) : null,
       imageCover,
+      slug,
+      summary,
+      category,
     };
 
     setData(updatedData);

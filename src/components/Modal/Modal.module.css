@@ -8,3 +8,56 @@
   left: 50%;
   transform: translate(-50%, -50%) !important;
 }
+
+.modalBody {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.modalCol1 {
+  width: 30%;
+  overflow: hidden;
+}
+
+.modalCol2 {
+  width: 69%;
+  margin-left: 0.5%;
+}
+
+@media (max-width: 768px) {
+  .modalCol1 {
+    width: 96%;
+    margin: 0 auto;
+  }
+
+  .modalCol2 {
+    width: 96%;
+    margin: 0 auto;
+  }
+}
+
+.button {
+  background-color: #ffbb00;
+  border-color: #ffbb00;
+  color: #444;
+  font-size: 14px;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #c6940b;
+  border-color: #c6940b;
+  color: #fff;
+}
+
+.category {
+  color: #ffbb00;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.summary {
+  font-size:13px
+}
+

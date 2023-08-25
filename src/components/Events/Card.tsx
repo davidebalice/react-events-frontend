@@ -5,6 +5,7 @@ import { AiTwotoneCalendar } from "react-icons/ai";
 import { BiSolidMap } from "react-icons/bi";
 import parse from "html-react-parser";
 import classes from "./Card.module.css";
+import { NavLink } from "react-router-dom";
 
 const Card: React.FC<CardProps> = ({ event, delay }) => {
   const photo = `${backendURL}/assets/images/events/${event.imageCover}`;
@@ -17,15 +18,24 @@ const Card: React.FC<CardProps> = ({ event, delay }) => {
       data-aos-delay={delay}
       data-delay={delay}
     >
-      <a href="blog-details.html">
-        <article>
+      <NavLink
+        to={`/event/${event.slug}`}
+        className="nav-link smooth-scroll mt-2 mb-2"
+      >
+        <article className={classes.card}>
           <div className="post-img">
             {event.category && (
-              <p className="post-category-abs">
-                {event.category.name}
-              </p>
+              <p className="post-category-abs">{event.category.name}</p>
             )}
-            <img src={photo} alt="" className="img-fluid" />
+            <img
+              src={photo}
+              alt={event.name}
+              className="img-fluid"
+              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                const target = e.target as HTMLImageElement;
+                target.src = `${backendURL}/assets/images/placeholder.jpg`;
+              }}
+            />
           </div>
 
           <div className="d-flex align-items-center">
@@ -38,9 +48,11 @@ const Card: React.FC<CardProps> = ({ event, delay }) => {
 
           <h2 className={classes.title}>{event.name}</h2>
 
-          <p className={classes.description}>{parse(event.summary)}</p>
+          <p className={classes.description}>
+            {event.summary ? parse(event.summary) : null}
+          </p>
         </article>
-      </a>
+      </NavLink>
     </div>
   );
 };

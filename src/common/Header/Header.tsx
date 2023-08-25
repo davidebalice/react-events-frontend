@@ -85,7 +85,7 @@ const Header: FC<HeaderProps> = ({ home }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className="nav-link smooth-scroll">
+                <NavLink to="/contacts" className="nav-link smooth-scroll">
                   Contact
                 </NavLink>
               </li>
