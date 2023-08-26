@@ -46,12 +46,8 @@ const EventDetails: FunctionComponent = () => {
         />
       )}
       <div className="bgDetails">
-        <Spacer height={110} />
-        {eventData && 
-          <Details eventData={eventData} />
-        }
+        {eventData && <Details eventData={eventData} />}
         <LoadingHome />
-        <Spacer height={80} />
       </div>
       <Footer />
     </>

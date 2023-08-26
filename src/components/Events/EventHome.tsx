@@ -4,6 +4,7 @@ import { EventData, Event } from "./types";
 import Card from "./Card";
 import { backendURL } from "../../context";
 import { demoMode } from "../../apiConfig";
+import classes from "./Card.module.css";
 
 const EventHome: React.FC = (props) => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -41,10 +42,7 @@ const EventHome: React.FC = (props) => {
   }, []);
 
   return (
-    <section
-      id="recent-posts"
-      className="recent-posts"
-    >
+    <section id="recent-posts" className="recent-posts">
       <div className="container section-title" data-aos="fade-up">
         <h2>Upcoming events</h2>
         <p>
@@ -54,7 +52,7 @@ const EventHome: React.FC = (props) => {
       </div>
 
       <div className="container">
-        <div className="row gy-4">
+        <div className={`${classes.cardContainer} row gy-4`}>
           {events.map((event, index) => {
             const currentDelay = index * 5000;
             return <Card key={event._id} event={event} delay={currentDelay} />;

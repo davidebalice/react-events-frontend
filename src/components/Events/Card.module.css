@@ -1,11 +1,20 @@
-.card{
+.cardContainer {
+  display: flex;
+}
+
+.cardExternal {
+  flex-direction: column;
+  
+}
+
+.card {
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.5s;
 }
 
-.card:hover{
-  background:#f1f1f1;
-  transform: scale(1.02); 
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+.card:hover {
+  background: #f1f1f1;
+  transform: scale(1.02);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
@@ -30,8 +39,10 @@
 
 .description {
   color: #777;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 18px;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  height: 120px;
+  text-align: justify;
 }

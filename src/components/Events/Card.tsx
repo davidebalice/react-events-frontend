@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({ event, delay }) => {
 
   return (
     <div
-      className="col-xl-4 col-md-6"
+      className={`${classes.cardExternal} col-xl-4 col-md-6`}
       data-aos="fade-up"
       data-aos-delay={delay}
       data-delay={delay}
