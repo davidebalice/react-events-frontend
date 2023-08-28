@@ -13,6 +13,7 @@ export interface Event {
   };
   ratingsAverage: number;
   ratingsQuantity: number;
+  price: number;
   summary: string;
   description: string;
   images: string[];

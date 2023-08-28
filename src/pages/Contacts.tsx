@@ -9,7 +9,7 @@ import Header from "../common/Header/Header";
 import Banner from "../components/Hero/Banner";
 import Spacer from "../components/Utils/Spacer";
 import Divider from "../components/Utils/Divider";
-import calendar from "../assets/images/calendar.jpg";
+import contact from "../assets/images/contact.jpg";
 
 const Contacts: FunctionComponent = () => {
   return (
@@ -17,8 +17,14 @@ const Contacts: FunctionComponent = () => {
       <title>Events Calendar</title>
       <Head />
       <Header home={false} />
-      <Banner img={calendar} text="Contacts" link="Contacts"  title=""
-        detail={false} />
+      <Banner
+        img={contact}
+        text="Contacts"
+        link="Contacts"
+        title=""
+        booking={false}
+        detail={false}
+      />
       <Spacer height={70} />
       <Main>
         <LoadingHome />

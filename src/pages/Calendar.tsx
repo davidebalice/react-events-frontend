@@ -23,6 +23,7 @@ const Calendar: FunctionComponent = () => {
         link="Calendar"
         title=""
         detail={false}
+        booking={false}
       />
       <Spacer height={70} />
       <Main>

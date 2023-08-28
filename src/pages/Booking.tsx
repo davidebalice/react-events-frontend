@@ -9,22 +9,23 @@ import Head from "../common/Head/Head";
 import Header from "../common/Header/Header";
 import Banner from "../components/Hero/Banner";
 import Spacer from "../components/Utils/Spacer";
-import Details from "../components/Events/Details";
+import Booking from "../components/Booking/Booking";
 import eventsPhoto from "../assets/images/events.jpg";
 import apiUrls, { demoMode } from "../apiConfig";
 
-const EventDetails: FunctionComponent = () => {
+const BookingDetails: FunctionComponent = () => {
   const [eventData, setEventData] = useState<Event>();
-  const { slug } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get<EventResponse>(
-          `${apiUrls.getEventBySlug}/${slug}`
+          `${apiUrls.getEventById}/${id}`
         );
         const eventData: Event = response.data.event;
         setEventData(eventData);
+        console.log(eventData);
       } catch (error) {
         console.error("Err:", error);
       }
@@ -44,11 +45,11 @@ const EventDetails: FunctionComponent = () => {
           link="Events"
           title={eventData.name}
           detail={true}
-          booking={false}
+          booking={true}
         />
       )}
       <div className="bgDetails">
-        {eventData && <Details eventData={eventData} />}
+        {eventData && <Booking eventData={eventData} />}
         <LoadingHome />
       </div>
       <Footer />
@@ -56,4 +57,4 @@ const EventDetails: FunctionComponent = () => {
   );
 };
 
-export default EventDetails;
+export default BookingDetails;

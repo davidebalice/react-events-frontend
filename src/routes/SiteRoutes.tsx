@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Calendar from "../pages/Calendar";
 import Events from "../pages/Events";
 import EventDetails from "../pages/EventDetails";
+import Booking from "../pages/Booking";
 import About from "../pages/About";
 import Contacts from "../pages/Contacts";
 import PageNotFound from "../pages/NotFound";
@@ -21,6 +22,7 @@ const SiteRoutes: React.FC<RoutesProps> = (props) => {
         <Route path="/about-us" element={<About />} />
         <Route path="/events" element={<Events />} />
         <Route path="/event/:slug" element={<EventDetails />} />
+        <Route path="/booking/:id" element={<Booking />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/contacts" element={<Contacts />} />
       </Routes>

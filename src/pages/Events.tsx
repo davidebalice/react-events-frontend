@@ -23,6 +23,7 @@ const Events: FunctionComponent = () => {
         link="Events"
         title=""
         detail={false}
+        booking={false}
       />
       <Spacer height={70} />
       <Main>

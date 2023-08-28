@@ -8,6 +8,7 @@ interface BannerProps {
   link: string;
   title: string;
   detail: boolean;
+  booking: boolean;
 }
 
 const Banner: FunctionComponent<BannerProps> = (props) => {
@@ -20,6 +21,7 @@ const Banner: FunctionComponent<BannerProps> = (props) => {
             link={props.link}
             detail={props.detail}
             title={props.title}
+            booking={props.booking}
           />
         </p>
       </div>

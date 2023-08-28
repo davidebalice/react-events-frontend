@@ -3,7 +3,7 @@ import axios from "axios";
 import { EventData, Event } from "./types";
 import Card from "./Card";
 import { backendURL } from "../../context";
-import { demoMode } from "../../apiConfig";
+import apiUrls, { demoMode } from "../../apiConfig";
 import classes from "./Card.module.css";
 
 const EventHome: React.FC = (props) => {
@@ -12,9 +12,7 @@ const EventHome: React.FC = (props) => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get<EventData>(
-          `${backendURL}/api/v1/events/?limit=6`
-        );
+        const response = await axios.get<EventData>(apiUrls.getHomeEvents);
         const filteredEvents: Event[] = response.data.events.filter(
           (event: Event) => {
             const startDate = new Date(event.startDate);
