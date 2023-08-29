@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { EventData, Event } from "./types";
 import Card from "./Card";
-import { backendURL } from "../../context";
 import apiUrls, { demoMode } from "../../apiConfig";
 import classes from "./Card.module.css";
 

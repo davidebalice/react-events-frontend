@@ -25,7 +25,6 @@ const BookingDetails: FunctionComponent = () => {
         );
         const eventData: Event = response.data.event;
         setEventData(eventData);
-        console.log(eventData);
       } catch (error) {
         console.error("Err:", error);
       }

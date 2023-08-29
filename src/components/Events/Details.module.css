@@ -164,12 +164,59 @@
   align-items: center;
   flex-wrap: nowrap;
   border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 .totalSx {
   width: fit-content;
+  font-size: 19px;
+  font-weight: bold;
 }
 
 .totalDx {
   width: fit-content;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.button {
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  background: #ffbb00;
+  color: #fff;
+  border-color: #ffbb00;
+  border-radius: 4px;
+  display: flex;
+  width: fit-content;
+  gap: 8px;
+  align-items: center;
+}
+
+.back {
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 14px;
+  background-color: #ffbb00;
+  border-radius: 4px;
+  width: fit-content;
+  color: #fff;
+}
+
+.back:hover .back a:hover {
+  background-color: #e2a704;
+  color: #fff;
+}
+
+.backLink {
+  color: #fff;
+  padding: 8px;
+}
+
+.demo {
+  color: #ff0000;
+  font-size: 13px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 30px;
 }

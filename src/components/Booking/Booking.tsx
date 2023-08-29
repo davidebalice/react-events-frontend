@@ -4,14 +4,13 @@ import { backendURL } from "../../context";
 import { Event } from "../Events/types";
 import Spacer from "../Utils/Spacer";
 import classes from "../Events/Details.module.css";
-import { AiTwotoneCalendar } from "react-icons/ai";
-import { MdLocationOn, MdOutlinePriceChange } from "react-icons/md";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import parse from "html-react-parser";
 import { format, parseISO } from "date-fns";
 import Side from "../Events/Side";
-import { Form, Button, Col, Row, Container } from "react-bootstrap";
-import apiUrls from "../../apiConfig";
+import { Form, Col, Row, Container } from "react-bootstrap";
+import apiUrls, { demoMode } from "../../apiConfig";
+import { NavLink } from "react-router-dom";
 import { Stripe, StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import {
   PaymentElement,
@@ -56,6 +55,12 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
       total: eventData.price,
     });
 
+    const formattedTotal = eventData.total.toLocaleString("it-IT", {
+      style: "decimal",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
     const handleInputChange = (event: {
       target: { name: any; value: any };
     }) => {
@@ -95,7 +100,7 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
       }
 
       const response = await axios.post(apiUrls.postStripeIntent, {
-        amount: formData.total,
+        amount: formData.total * 100,
         currency: "eur",
       });
 
@@ -111,19 +116,11 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
         });
 
         if (error) {
-          // This point will only be reached if there is an immediate error when
-          // confirming the payment. Show error to your customer (for example, payment
-          // details incomplete)
           if (error.message !== undefined) {
             setErrorMessage(error.message);
           }
-        } else {
-          // Your customer will be redirected to your `return_url`. For some payment
-          // methods like iDEAL, your customer will be redirected to an intermediate
-          // site first to authorize the payment, then redirected to the `return_url`.
         }
       }
-      
     };
 
     return (
@@ -239,15 +236,24 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
           </Row>
           <Row className={classes.total}>
             <span className={classes.totalSx}>Total</span>
-            <span className={classes.totalDx}>{formData.total}</span>
+            <span className={classes.totalDx}>€ {formattedTotal}</span>
           </Row>
+          <PaymentElement className="mt-4" />
         </Container>
-        <PaymentElement />
-        <button type="submit" disabled={!stripe || !elements}>
-          Pay
+        {demoMode && (
+          <p className={classes.demo}>
+            Demo mode is active, submit is not permitted
+          </p>
+        )}
+        <button
+          type={demoMode ? "button" : "submit"}
+          className={`btn btn-success ${classes.button}`}
+          disabled={!stripe || !elements}
+        >
+          <BsFillCartPlusFill /> Confirm
         </button>
-        {/* Show error message to your customers */}
-        {errorMessage && <div>{errorMessage}</div>}
+
+        {errorMessage && <div style={{ padding: "10px" }}>{errorMessage}</div>}
       </form>
     );
   };
@@ -255,16 +261,27 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
   const options: StripeElementsOptions = {
     locale: "auto",
     mode: "payment",
-    amount: eventData.total,
+    amount: eventData.total * 100,
     currency: "eur",
   };
 
   return (
     <>
       <div className={`${classes.bgDetails}`}>
-        <Spacer height={110} />
+        <Spacer height={80} />
+
         {eventData && (
           <div className="container section-title" data-aos="fade-up">
+            <div className={classes.back}>
+              {" "}
+              <NavLink
+                to={`/event/${eventData.slug}`}
+                className={classes.backLink}
+              >
+                {parse("&lt; back")}
+              </NavLink>
+            </div>
+
             <div className={`${classes.detailsPage}`}>
               <div className={`${classes.column} ${classes.column1}`}>
                 <Container className={classes.formContainerTop}>
