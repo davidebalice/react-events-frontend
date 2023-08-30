@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 import { format, parseISO } from "date-fns";
 import Side from "../Events/Side";
 import { Form, Col, Row, Container } from "react-bootstrap";
-import apiUrls, { demoMode } from "../../apiConfig";
+import apiUrls, { demoMode, stripePkKey } from "../../apiConfig";
 import { NavLink } from "react-router-dom";
 import { Stripe, StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import {
@@ -31,7 +31,7 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
 
   useEffect(() => {
     const initializeStripe = async () => {
-      const stripeLoaded = await loadStripe("pk_test_TYzwqWFzGv4o5AcWDgEX1SNN");
+      const stripeLoaded = await loadStripe(stripePkKey);
       setStripePromise(Promise.resolve(stripeLoaded));
     };
 
@@ -42,15 +42,18 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessage, setErrorMessage] = useState("");
+    const [sended, setSended] = useState(false);
+    //const [bookingId, setBookingId] = useState("");
 
     const formattedStart = format(parseISO(eventData.startDate), "yyyy-MM-dd");
 
     const [formData, setFormData] = useState({
+      event: eventData._id,
       firstName: "",
       lastName: "",
       email: "",
       phone: "",
-      quantity: 1,
+      qty: 1,
       date: formattedStart,
       total: eventData.price,
     });
@@ -65,8 +68,7 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
       target: { name: any; value: any };
     }) => {
       const { name, value } = event.target;
-      const newQuantity =
-        name === "quantity" ? parseInt(value, 10) : formData.quantity;
+      const newQuantity = name === "qty" ? parseInt(value, 10) : formData.qty;
       const newTotal = eventData.price * newQuantity;
       eventData.total = newTotal;
       setFormData((prevData) => ({
@@ -76,16 +78,17 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
       }));
     };
 
+    let bookingId: String;
     const handleSubmit = async (event: { preventDefault: () => void }) => {
       event.preventDefault();
-
+      setSended(true);
       try {
         const response = await axios.post(apiUrls.postBooking, formData);
-        console.log("Data saved:", response.data);
+        bookingId = response.data.bookingId;
+        //console.log("Data saved:", response.data);
       } catch (error) {
         console.error("Error during save:", error);
       }
-      console.log(formData);
 
       if (elements == null) {
         return;
@@ -106,12 +109,12 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
 
       const { clientSecret } = response.data;
 
-      if (stripe) {
+      if (stripe && bookingId) {
         const { error } = await stripe.confirmPayment({
           elements,
           clientSecret,
           confirmParams: {
-            return_url: "https://example.com/order/123/complete",
+            return_url: `https://example.com/success/booking/${bookingId}/complete`,
           },
         });
 
@@ -202,12 +205,12 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
           </Row>
           <Row className={classes.formRow}>
             <Col md={6}>
-              <Form.Group controlId="quantity">
+              <Form.Group controlId="qty">
                 <Form.Label>Quantity</Form.Label>
                 <Form.Control
                   as="select"
-                  name="quantity"
-                  value={formData.quantity}
+                  name="qty"
+                  value={formData.qty}
                   onChange={handleInputChange}
                   className={classes.field}
                 >
@@ -237,6 +240,8 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
           <Row className={classes.total}>
             <span className={classes.totalSx}>Total</span>
             <span className={classes.totalDx}>€ {formattedTotal}</span>
+            <input type="hidden" name="total" value={eventData.total} />
+            <input type="hidden" name="event" value={eventData._id} />
           </Row>
           <PaymentElement className="mt-4" />
         </Container>
@@ -248,12 +253,13 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
         <button
           type={demoMode ? "button" : "submit"}
           className={`btn btn-success ${classes.button}`}
-          disabled={!stripe || !elements}
+          disabled={!stripe || !elements || demoMode || sended}
         >
           <BsFillCartPlusFill /> Confirm
         </button>
 
         {errorMessage && <div style={{ padding: "10px" }}>{errorMessage}</div>}
+        <Spacer height={100} />
       </form>
     );
   };
@@ -284,11 +290,14 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
 
             <div className={`${classes.detailsPage}`}>
               <div className={`${classes.column} ${classes.column1}`}>
-                <Container className={classes.formContainerTop}>
-                  <Elements stripe={stripePromise} options={options}>
-                    <CheckoutForm />
-                  </Elements>
-                </Container>
+                <div className={`${classes.column} ${classes.column1Box}`}>
+                  {" "}
+                  <Container className={classes.formContainerTop}>
+                    <Elements stripe={stripePromise} options={options}>
+                      <CheckoutForm />
+                    </Elements>
+                  </Container>
+                </div>
               </div>
               <div className={`${classes.column} ${classes.column3}`}>{""}</div>
               <div className={`${classes.column} ${classes.column2}`}>
