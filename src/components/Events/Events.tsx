@@ -6,9 +6,21 @@ import apiUrls, { demoMode } from "../../apiConfig";
 import classes from "./Card.module.css";
 import Loading from "../../common/Loading/Loading";
 
-const EventHome: React.FC = (props) => {
+interface EventsProps {
+  results: Event[];
+}
+
+const Events: React.FC<EventsProps> = ({ results }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
+
+  if (results.length >= 1) {
+    setEvents(results);
+  }
+
+  console.log("results");
+  console.log(results);
+  console.log(events);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -52,7 +64,7 @@ const EventHome: React.FC = (props) => {
       </div>
 
       <div className="container">
-        <div className={`${classes.cardContainer} row gy-4`}>
+        <div className={`${classes.cardContainer} row gy-6`}>
           {loading ? (
             <Loading />
           ) : (
@@ -60,7 +72,12 @@ const EventHome: React.FC = (props) => {
               {events.map((event, index) => {
                 const currentDelay = index * 5000;
                 return (
-                  <Card col={3} key={event._id} event={event} delay={currentDelay} />
+                  <Card
+                    col={2}
+                    key={event._id}
+                    event={event}
+                    delay={currentDelay}
+                  />
                 );
               })}
             </>
@@ -71,4 +88,4 @@ const EventHome: React.FC = (props) => {
   );
 };
 
-export default EventHome;
+export default Events;

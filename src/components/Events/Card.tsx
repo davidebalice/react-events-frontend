@@ -7,13 +7,14 @@ import parse from "html-react-parser";
 import classes from "./Card.module.css";
 import { NavLink } from "react-router-dom";
 
-const Card: React.FC<CardProps> = ({ event, delay }) => {
+const Card: React.FC<CardProps> = ({ event, delay, col }) => {
   const photo = `${backendURL}/assets/images/events/${event.imageCover}`;
   const formattedDate = new Date(event.startDate).toLocaleDateString();
+  const colClass = col === 3 ? "col-xl-4 col-md-6" : "col-md-6 mb-3";
 
   return (
     <div
-      className={`${classes.cardExternal} col-xl-4 col-md-6`}
+      className={`${classes.cardExternal} ${colClass}`}
       data-aos="fade-up"
       data-aos-delay={delay}
       data-delay={delay}
@@ -23,7 +24,7 @@ const Card: React.FC<CardProps> = ({ event, delay }) => {
         className="nav-link smooth-scroll mt-2 mb-2"
       >
         <article className={classes.card}>
-          <div className="post-img">
+          <div className={col === 3 ? classes.imgContainer : classes.imgContainerBig}>
             {event.category && (
               <p className="post-category-abs">{event.category.name}</p>
             )}

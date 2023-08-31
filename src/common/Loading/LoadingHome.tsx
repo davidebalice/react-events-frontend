@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import LoaderIcon from "../../assets/images/rolling.svg";
 
-const LoadingHome = () => {
+const LoadingHome: React.FC = () => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
@@ -23,9 +23,7 @@ const LoadingHome = () => {
           display: fadeOut ? "none" : "flex",
         }}
       >
-     
-            <img src={LoaderIcon} alt="loading" />
-          
+        <img src={LoaderIcon} alt="loading" />
       </Container>
     </>
   );

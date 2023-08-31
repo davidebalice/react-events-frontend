@@ -44,4 +44,5 @@ export interface EventData {
 export interface CardProps {
   event: Event;
   delay: Number;
+  col: Number;
 }

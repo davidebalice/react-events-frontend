@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 import { format, parseISO } from "date-fns";
 import Side from "../Events/Side";
 import { Form, Col, Row, Container } from "react-bootstrap";
-import apiUrls, { demoMode, stripePkKey } from "../../apiConfig";
+import apiUrls, { demoMode, stripePkKey, SITE_BASE_URL } from "../../apiConfig";
 import { NavLink } from "react-router-dom";
 import { Stripe, StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import {
@@ -43,7 +43,6 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
     const elements = useElements();
     const [errorMessage, setErrorMessage] = useState("");
     const [sended, setSended] = useState(false);
-    //const [bookingId, setBookingId] = useState("");
 
     const formattedStart = format(parseISO(eventData.startDate), "yyyy-MM-dd");
 
@@ -114,7 +113,7 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
           elements,
           clientSecret,
           confirmParams: {
-            return_url: `https://example.com/success/booking/${bookingId}/complete`,
+            return_url: `${SITE_BASE_URL}/success/booking/${bookingId}/complete`,
           },
         });
 

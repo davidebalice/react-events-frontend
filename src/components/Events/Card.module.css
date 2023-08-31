@@ -4,7 +4,6 @@
 
 .cardExternal {
   flex-direction: column;
-  
 }
 
 .card {
@@ -45,4 +44,18 @@
   text-overflow: ellipsis;
   height: 120px;
   text-align: justify;
+}
+
+.imgContainer {
+  max-height: 255px;
+  margin: -30px -30px 15px -30px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.imgContainerBig {
+  max-height: 340px;
+  margin: -30px -30px 15px -30px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
 }

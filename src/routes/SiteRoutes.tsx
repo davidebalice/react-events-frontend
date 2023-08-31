@@ -8,6 +8,7 @@ import EventDetails from "../pages/EventDetails";
 import Booking from "../pages/Booking";
 import About from "../pages/About";
 import Contacts from "../pages/Contacts";
+import Success from "../pages/Success";
 import PageNotFound from "../pages/NotFound";
 
 interface RoutesProps {}
@@ -20,11 +21,12 @@ const SiteRoutes: React.FC<RoutesProps> = (props) => {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<About />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/events" element={<Events/>} />
         <Route path="/event/:slug" element={<EventDetails />} />
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/success/booking/:id/complete" element={<Success />} />
       </Routes>
     </ScrollToTop>
   );

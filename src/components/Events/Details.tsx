@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import { backendURL } from "../../context";
-import { NavLink } from "react-router-dom";
 import { Event } from "./types";
 import Spacer from "../Utils/Spacer";
 import classes from "./Details.module.css";
@@ -48,7 +47,6 @@ const Details: FC<DetailsProps> = ({ eventData }) => {
                 <Gallery eventData={eventData} />
                 <Map eventData={eventData} />
 
-                
               </div>
               <div className={`${classes.column} ${classes.column3}`}>{""}</div>
               <div className={`${classes.column} ${classes.column2}`}>
