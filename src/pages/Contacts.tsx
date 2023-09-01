@@ -3,7 +3,7 @@ import Footer from "../common/Footer/Footer";
 import LoadingHome from "../common/Loading/LoadingHome";
 import Head from "../common/Head/Head";
 import Main from "../common/Main/Main";
-import Team from "../components/Team/Team";
+import Conctacts from "../components/Contacts/Contacts";
 import Text from "../components/Calendar/Text";
 import Header from "../common/Header/Header";
 import Banner from "../components/Hero/Banner";
@@ -28,10 +28,8 @@ const Contacts: FunctionComponent = () => {
       <Spacer height={70} />
       <Main>
         <LoadingHome />
-        <Text />
-        <Divider />
-        <Spacer height={80} />
-        <Team />
+        <Conctacts />
+        <Spacer height={170} />
       </Main>
       <Footer />
     </>

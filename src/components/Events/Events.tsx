@@ -54,14 +54,6 @@ const Events: React.FC<EventsProps> = ({ results, loadingSearch }) => {
 
   return (
     <section id="recent-posts" className="recent-posts">
-      <div className="container section-title" data-aos="fade-up">
-        <h2>Upcoming events</h2>
-        <p>
-          Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-          consectetur velit
-        </p>
-      </div>
-
       <div className="container">
         <div className={`${classes.cardContainer} row gy-6`}>
           {loading || loadingSearch ? (

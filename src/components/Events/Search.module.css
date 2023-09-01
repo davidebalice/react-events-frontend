@@ -16,12 +16,18 @@
   margin-bottom: 12px;
   background-color: #ffbb00;
   border-color: #ffbb00;
-  padding: 8px;
   font-size: 13px;
   color: #444;
   font-weight: bold;
+  height: 48px;
+  display:flex;
+  gap:6px;
+  justify-content: center;
+  align-items: center;
 }
 .input {
-  height: 40px;
+  height: 48px;
   font-size: 13px;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
+

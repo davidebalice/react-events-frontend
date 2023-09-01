@@ -4,6 +4,7 @@ import { Form, Button, Col } from "react-bootstrap";
 import { EventData, Event } from "./types";
 import apiUrls, { demoMode } from "../../config";
 import classes from "./Search.module.css";
+import { AiOutlineSearch } from "react-icons/ai";
 import { Context } from "../../context";
 
 interface SearchProps {
@@ -55,7 +56,7 @@ const Search: React.FC<SearchProps> = ({ onResults, onLoading }) => {
   };
 
   return (
-    <section>
+    <section className="p-0">
       <div className="container">
         <Form className={classes.searchContainer}>
           <Col md={3} xs={12}>
@@ -112,6 +113,7 @@ const Search: React.FC<SearchProps> = ({ onResults, onLoading }) => {
               className={classes.button}
               disabled={startSearch}
             >
+              <AiOutlineSearch size={17} />
               Search
             </Button>
           </Col>

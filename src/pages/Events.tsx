@@ -10,6 +10,7 @@ import Header from "../common/Header/Header";
 import Banner from "../components/Hero/Banner";
 import Spacer from "../components/Utils/Spacer";
 import Divider from "../components/Utils/Divider";
+import Text from "../components/Events/Text";
 import eventsPhoto from "../assets/images/events.jpg";
 
 const Events: React.FC = () => {
@@ -42,8 +43,9 @@ const Events: React.FC = () => {
       <Spacer height={70} />
       <Main>
         <LoadingHome />
+        <Text />
         <Search onResults={resultHandler} onLoading={loadingHandler} />
-        <Spacer height={20} />
+        <Divider  />
         <EventsContainer results={results} loadingSearch={loadingSearch} />
       </Main>
       <Footer />
