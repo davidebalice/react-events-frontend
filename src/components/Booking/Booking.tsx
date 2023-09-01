@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
 import axios from "axios";
-import { backendURL } from "../../context";
 import { Event } from "../Events/types";
 import Spacer from "../Utils/Spacer";
 import classes from "../Events/Details.module.css";
@@ -9,7 +8,12 @@ import parse from "html-react-parser";
 import { format, parseISO } from "date-fns";
 import Side from "../Events/Side";
 import { Form, Col, Row, Container } from "react-bootstrap";
-import apiUrls, { demoMode, stripePkKey, SITE_BASE_URL } from "../../apiConfig";
+import apiUrls, {
+  demoMode,
+  stripePkKey,
+  SITE_BASE_URL,
+  BACKEND_URL,
+} from "../../config";
 import { NavLink } from "react-router-dom";
 import { Stripe, StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import {
@@ -132,7 +136,7 @@ const Booking: FC<BookingProps> = ({ eventData }) => {
             <Col md={3}>
               {" "}
               <img
-                src={`${backendURL}/assets/images/events/${eventData.imageCover}`}
+                src={`${BACKEND_URL}/assets/images/events/${eventData.imageCover}`}
                 alt={eventData.name}
                 className="img-fluid"
               />

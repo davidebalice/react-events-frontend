@@ -14,9 +14,16 @@ import eventsPhoto from "../assets/images/events.jpg";
 
 const Events: React.FC = () => {
   const [results, setResults] = useState<Event[]>([]);
+  const [loadingSearch, setLoadingSearch] = useState(false);
 
   const resultHandler = (results: Event[]) => {
     setResults(results);
+  };
+
+  const loadingHandler = (
+    loadingSearch: boolean | ((prevState: boolean) => boolean)
+  ) => {
+    setLoadingSearch(loadingSearch);
   };
 
   return (
@@ -35,9 +42,9 @@ const Events: React.FC = () => {
       <Spacer height={70} />
       <Main>
         <LoadingHome />
-        <Search onResults={resultHandler} />
+        <Search onResults={resultHandler} onLoading={loadingHandler} />
         <Spacer height={20} />
-        <EventsContainer results={results} />
+        <EventsContainer results={results} loadingSearch={loadingSearch} />
       </Main>
       <Footer />
     </>

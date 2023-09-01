@@ -1,6 +1,5 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
 import { useParams } from "react-router-dom";
-import { backendURL } from "../context";
 import axios from "axios";
 import { Event, EventResponse } from "../components/Events/types";
 import Footer from "../common/Footer/Footer";
@@ -11,7 +10,7 @@ import Banner from "../components/Hero/Banner";
 import Spacer from "../components/Utils/Spacer";
 import Details from "../components/Events/Details";
 import eventsPhoto from "../assets/images/events.jpg";
-import apiUrls, { demoMode } from "../apiConfig";
+import apiUrls, { demoMode } from "../config";
 
 const EventDetails: FunctionComponent = () => {
   const [eventData, setEventData] = useState<Event>();

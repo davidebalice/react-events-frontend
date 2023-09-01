@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import { backendURL } from "../../context";
 import { Event } from "./types";
 import Spacer from "../Utils/Spacer";
 import classes from "./Details.module.css";
@@ -7,6 +6,7 @@ import Side from "./Side";
 import Gallery from "./Gallery";
 import Map from "./Map";
 import parse from "html-react-parser";
+import { BACKEND_URL } from "../../config";
 
 interface DetailsProps {
   eventData: Event;
@@ -33,7 +33,7 @@ const Details: FC<DetailsProps> = ({ eventData }) => {
               <div className={`${classes.column} ${classes.column1}`}>
                 <div className={`${classes.column} ${classes.column1Box}`}>
                   <img
-                    src={`${backendURL}/assets/images/events/${eventData.imageCover}`}
+                    src={`${BACKEND_URL}/assets/images/events/${eventData.imageCover}`}
                     alt={eventData.name}
                     className="img-fluid"
                   />
@@ -46,7 +46,6 @@ const Details: FC<DetailsProps> = ({ eventData }) => {
 
                 <Gallery eventData={eventData} />
                 <Map eventData={eventData} />
-
               </div>
               <div className={`${classes.column} ${classes.column3}`}>{""}</div>
               <div className={`${classes.column} ${classes.column2}`}>

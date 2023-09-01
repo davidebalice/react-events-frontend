@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { backendURL } from "../../context";
+import { BACKEND_URL } from "../../config";
 import { Event } from "./types";
 import Spacer from "../Utils/Spacer";
 import classes from "./Details.module.css";
@@ -34,7 +34,7 @@ const Gallery: FC<GalleryProps> = ({ eventData }) => {
                   <div className={`${classes.galleryColumn} col-md-4`}>
                     <img
                       key={index}
-                      src={`${backendURL}/assets/images/events/${image}`}
+                      src={`${BACKEND_URL}/assets/images/events/${image}`}
                       alt={` ${index + 1}`}
                       style={{ maxWidth: "100%", height: "auto" }}
                       onClick={() => openImage(image)}
@@ -52,7 +52,7 @@ const Gallery: FC<GalleryProps> = ({ eventData }) => {
                           &times;
                         </span>
                         <img
-                          src={`${backendURL}/assets/images/events/${selectedImage}`}
+                          src={`${BACKEND_URL}/assets/images/events/${selectedImage}`}
                           alt="Selected"
                           onClick={closeImage}
                           className={`${classes.modalPhoto}`}

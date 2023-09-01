@@ -8,7 +8,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { Container } from "react-bootstrap";
 import Modal from "../Modal/Modal";
 import classes from "./Calendar.module.css";
-import apiUrls from "../../apiConfig";
+import apiUrls from "../../config";
 
 interface Event {
   title: string;

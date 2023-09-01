@@ -6,7 +6,7 @@ import LoadingHome from "../common/Loading/LoadingHome";
 import Head from "../common/Head/Head";
 import Header from "../common/Header/Header";
 import Spacer from "../components/Utils/Spacer";
-import apiUrls from "../apiConfig";
+import apiUrls from "../config";
 import classes from "../components/Events/Details.module.css";
 
 const Success: FunctionComponent = () => {

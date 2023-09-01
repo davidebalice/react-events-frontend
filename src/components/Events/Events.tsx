@@ -2,56 +2,55 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { EventData, Event } from "./types";
 import Card from "./Card";
-import apiUrls, { demoMode } from "../../apiConfig";
+import apiUrls, { demoMode } from "../../config";
 import classes from "./Card.module.css";
 import Loading from "../../common/Loading/Loading";
 
 interface EventsProps {
   results: Event[];
+  loadingSearch: boolean;
 }
 
-const Events: React.FC<EventsProps> = ({ results }) => {
+const Events: React.FC<EventsProps> = ({ results, loadingSearch }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
-  if (results.length >= 1) {
-    setEvents(results);
-  }
-
-  console.log("results");
-  console.log(results);
-  console.log(events);
-
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await axios.get<EventData>(apiUrls.getHomeEvents);
-        const filteredEvents: Event[] = response.data.events.filter(
-          (event: Event) => {
-            const startDate = new Date(event.startDate);
-            const today = new Date();
-            setLoading(false);
-            if (demoMode) {
-              return true;
-            } else {
-              return startDate >= today;
+    if (results.length >= 1) {
+      setLoading(true);
+      setEvents(results);
+      setLoading(false);
+    } else {
+      const fetchEvents = async () => {
+        try {
+          const response = await axios.get<EventData>(apiUrls.getHomeEvents);
+          const filteredEvents: Event[] = response.data.events.filter(
+            (event: Event) => {
+              const startDate = new Date(event.startDate);
+              const today = new Date();
+              setLoading(false);
+              if (demoMode) {
+                return true;
+              } else {
+                return startDate >= today;
+              }
             }
-          }
-        );
-        filteredEvents.sort(
-          (a: Event, b: Event) =>
-            new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-        );
+          );
+          filteredEvents.sort(
+            (a: Event, b: Event) =>
+              new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+          );
 
-        const limitedEvents = filteredEvents.slice(0, 6);
-        setEvents(limitedEvents);
-      } catch (error) {
-        console.error("Err:", error);
-      }
-    };
+          const limitedEvents = filteredEvents.slice(0, 6);
+          setEvents(limitedEvents);
+        } catch (error) {
+          console.error("Err:", error);
+        }
+      };
 
-    fetchEvents();
-  }, []);
+      fetchEvents();
+    }
+  }, [results]);
 
   return (
     <section id="recent-posts" className="recent-posts">
@@ -65,7 +64,7 @@ const Events: React.FC<EventsProps> = ({ results }) => {
 
       <div className="container">
         <div className={`${classes.cardContainer} row gy-6`}>
-          {loading ? (
+          {loading || loadingSearch ? (
             <Loading />
           ) : (
             <>

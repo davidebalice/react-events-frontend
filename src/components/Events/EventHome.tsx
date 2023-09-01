@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { EventData, Event } from "./types";
 import Card from "./Card";
-import apiUrls, { demoMode } from "../../apiConfig";
+import apiUrls, { demoMode } from "../../config";
 import classes from "./Card.module.css";
 import Loading from "../../common/Loading/Loading";
 
@@ -60,7 +60,12 @@ const EventHome: React.FC = (props) => {
               {events.map((event, index) => {
                 const currentDelay = index * 5000;
                 return (
-                  <Card col={3} key={event._id} event={event} delay={currentDelay} />
+                  <Card
+                    col={3}
+                    key={event._id}
+                    event={event}
+                    delay={currentDelay}
+                  />
                 );
               })}
             </>

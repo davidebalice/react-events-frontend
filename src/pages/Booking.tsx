@@ -10,7 +10,7 @@ import Banner from "../components/Hero/Banner";
 import Spacer from "../components/Utils/Spacer";
 import Booking from "../components/Booking/Booking";
 import eventsPhoto from "../assets/images/events.jpg";
-import apiUrls from "../apiConfig";
+import apiUrls from "../config";
 
 const BookingDetails: FunctionComponent = () => {
   const [eventData, setEventData] = useState<Event>();

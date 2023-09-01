@@ -1,5 +1,5 @@
 import React from "react";
-import { backendURL } from "../../context";
+import { BACKEND_URL } from "../../config";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -27,11 +27,11 @@ const ModalWindow = ({ show, handleShow, handleClose, data }) => {
         <Modal.Body className={classes.modalBody}>
           <div className={classes.modalCol1}>
             <img
-              src={`${backendURL}/assets/images/events/${data.imageCover}`}
+              src={`${BACKEND_URL}/assets/images/events/${data.imageCover}`}
               className="w-100"
               alt="event"
               onError={(e) => {
-                e.target.src = `${backendURL}/assets/images/placeholder.jpg`;
+                e.target.src = `${BACKEND_URL}/assets/images/placeholder.jpg`;
               }}
             />
             <NavLink
@@ -45,7 +45,9 @@ const ModalWindow = ({ show, handleShow, handleClose, data }) => {
             <Form>
               <h5>{data.title}</h5>
               <h6 className={classes.category}>{categoryName}</h6>
-              <p className={classes.summary}>{data.summary ? parse(data.summary) : null}</p>
+              <p className={classes.summary}>
+                {data.summary ? parse(data.summary) : null}
+              </p>
             </Form>
           </div>
         </Modal.Body>

@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { backendURL } from "../../context";
 import { NavLink } from "react-router-dom";
 import { Event } from "./types";
 import Spacer from "../Utils/Spacer";
