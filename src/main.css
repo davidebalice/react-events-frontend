@@ -2813,3 +2813,18 @@ section {
 .fc-daygrid-event-dot {
   display: none;
 }
+
+.custom-recaptcha {
+  width: 100%;
+}
+
+.recaptchaContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.recaptchaContainer > div > div {
+  width: 100%;
+}

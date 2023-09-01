@@ -1,6 +1,43 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
+import axios from "axios";
+import apiUrls, { demoMode } from "../../config";
+import ReCAPTCHA from "react-google-recaptcha";
+import Spacer from "../Utils/Spacer";
 
-const Presentation: FunctionComponent = () => {
+const Contact: FunctionComponent = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    from: "",
+    text: "",
+    subject: "",
+  });
+
+  const handleInputChange = (e: { target: { name: any; value: any } }) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleRecaptchaChange = (value: any) => {
+    console.log("reCAPTCHA value:", value);
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    axios
+      .post(apiUrls.postMessage, formData)
+      .then((response) => {
+        console.log("API Response:", response.data);
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
+    console.log("Dati inviati:", formData);
+  };
+
   return (
     <>
       <section id="contact" className="contact">
@@ -72,11 +109,11 @@ const Presentation: FunctionComponent = () => {
 
             <div className="col-lg-6">
               <form
-                action="forms/contact.php"
                 method="post"
                 className="php-email-form"
                 data-aos="fade-up"
                 data-aos-delay="200"
+                onSubmit={handleSubmit}
               >
                 <div className="row gy-4">
                   <div className="col-md-6">
@@ -86,6 +123,7 @@ const Presentation: FunctionComponent = () => {
                       className="form-control"
                       placeholder="Your Name"
                       required
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -93,9 +131,10 @@ const Presentation: FunctionComponent = () => {
                     <input
                       type="email"
                       className="form-control"
-                      name="email"
+                      name="from"
                       placeholder="Your Email"
                       required
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -106,16 +145,18 @@ const Presentation: FunctionComponent = () => {
                       name="subject"
                       placeholder="Subject"
                       required
+                      onChange={handleInputChange}
                     />
                   </div>
 
                   <div className="col-md-12">
                     <textarea
                       className="form-control"
-                      name="message"
+                      name="text"
                       rows={6}
                       placeholder="Message"
                       required
+                      onChange={handleInputChange}
                     ></textarea>
                   </div>
 
@@ -125,7 +166,15 @@ const Presentation: FunctionComponent = () => {
                     <div className="sent-message">
                       Your message has been sent. Thank you!
                     </div>
-
+                    <div className="recaptchaContainer">
+                      <ReCAPTCHA
+                        sitekey="TUA_CHIAVE_DEL_SITO_RECAPTCHA"
+                        onChange={handleRecaptchaChange}
+                        className="custom-recaptcha"
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                    <Spacer height={20} />
                     <button type="submit">Send Message</button>
                   </div>
                 </div>
@@ -138,4 +187,4 @@ const Presentation: FunctionComponent = () => {
   );
 };
 
-export default Presentation;
+export default Contact;
