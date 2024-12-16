@@ -1,4 +1,4 @@
-import React, { useEffect, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import classes from "./Hero.module.css";
 
 const Hero: FunctionComponent = () => {
@@ -25,10 +25,10 @@ const Hero: FunctionComponent = () => {
             data-aos-delay="150"
             className={`${classes.title} mb-1`}
           >
-            Events website with Calendar
+            Events website
           </h2>
           <p data-aos="fade-up" data-aos-delay="300" className="mb-1">
-            Developer in React, Typescript and Node.
+            Developed in React and Node.
           </p>
           <a
             href="https://www.davidebalice.dev"

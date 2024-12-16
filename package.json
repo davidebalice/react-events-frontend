@@ -1,6 +1,6 @@
 {
-  "name": "events-frontend",
-  "version": "0.1.0",
+  "name": "react-events",
+  "version": "0.9.0",
   "private": true,
   "dependencies": {
     "-": "^0.0.1",

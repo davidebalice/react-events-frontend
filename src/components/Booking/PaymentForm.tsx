@@ -9,13 +9,13 @@ function PaymentForm() {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      return; // Non fare nulla se Stripe o Elements non sono ancora pronti
+      return;
     }
 
     const cardElement = elements.getElement(CardElement);
 
     if (!cardElement) {
-      return; // Non fare nulla se l'elemento della carta non è presente
+      return; 
     }
 
     const result = await stripe.createPaymentMethod({
